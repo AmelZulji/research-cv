@@ -1,0 +1,122 @@
+cv_theme:
+  page:
+    width: "210mm"
+    height: "297mm"
+
+  colors:
+    # Change `theme` to recolor the complete derived palette. Any formula below
+    # can be replaced by a fixed hex color, for example: accent: "#007D87".
+    theme: "#6F777A"
+    text: "#101010"
+    white: "#FFFFFF"
+    muted: "theme_color.darken(18%)"
+    accent: "theme_color.darken(10%)"
+    panel: "theme_color.lighten(84%)"
+    rule: "theme_color.lighten(62%)"
+    chip_fill: "theme_color.lighten(94%)"
+    chip_border: "theme_color.lighten(58%)"
+    chip_text: "theme_color.darken(28%)"
+    tag_fill: "theme_color.lighten(94%)"
+    tag_border: "theme_color.lighten(58%)"
+    tag_text: "theme_color.darken(28%)"
+
+  typography:
+    font:
+      - "Arial"
+    body_line_spacing: "0.52em"
+
+  header:
+    height: "56mm"
+    photo:
+      x: "14mm"
+      y: "7mm"
+      width: "42mm"
+      height: "42mm"
+    identity:
+      name_x: "81mm"
+      name_y: "6.5mm"
+      name_width: "48mm"
+      name_font_size: "24pt"
+      contacts_x: "74mm"
+      contacts_y: "19mm"
+      contacts_width: "62mm"
+      contacts_content_width: "48mm"
+      contacts_font_size: "8.2pt"
+      contact_row_space_after: "0.75mm"
+    profile:
+      x: "144mm"
+      y: "6.5mm"
+      width: "62mm"
+      font_size: "9.2pt"
+      line_spacing: "0.64em"
+
+  section_headings:
+    font_size: "13.8pt"
+    space_after_heading: "2.4mm"
+    space_between_sections: "4mm"
+    divider_width: "100%"
+    divider_thickness: "1pt"
+    space_between_text_and_divider: "0.8mm"
+
+  main_column:
+    x: "74.7mm"
+    y: "62.19mm"
+    width: "127mm"
+    role_font_size: "10.8pt"
+    metadata_font_size: "9.1pt"
+    project_title_font_size: "9.8pt"
+    bullet_font_size: "9.7pt"
+    entry_space_after: "2.3mm"
+    role_space_after: "1.25mm"
+    organization_space_after: "2.8mm"
+    project_title_space_after: "1.35mm"
+    project_space_after: "3.5mm"
+    education_entry_space_after: "1.6mm"
+    bullets:
+      item_spacing: "1.8mm"
+      marker_indent: "2.9mm"
+      text_indent: "1.9mm"
+
+  sidebar:
+    panel_width: "68.5mm"
+    # Equal left and right padding within the sidebar panel.
+    content_x: "3.3mm"
+    content_y: "62.19mm"
+    content_width: "61.9mm"
+    label_font_size: "9.2pt"
+    detail_font_size: "8.2pt"
+    space_between_sections: "5.5mm"
+    timeline_title_space_after: "0.9mm"
+    timeline_entry_space_after: "2.5mm"
+    skill_group_title_space_after: "1.25mm"
+    skill_group_space_after: "2.2mm"
+    chips:
+      font_size: "8.3pt"
+      horizontal_gap: "0.25mm"
+      padding_x: "1.9mm"
+      padding_y: "1.08mm"
+      corner_radius: "2.2mm"
+
+  second_page:
+    content_x: "13.99mm"
+    content_y: "9.12mm"
+    content_width: "181.92mm"
+    space_after_publications: "9mm"
+
+  publications:
+    subsection_font_size: "10pt"
+    entry_font_size: "9.6pt"
+    note_font_size: "7.8pt"
+    line_spacing: "0.56em"
+    subsection_space_after: "1.4mm"
+    entry_space_after: "2.6mm"
+
+  additional_sections:
+    title_space_after: "1.2mm"
+    entry_space_after: "2.5mm"
+    section_space_after: "3mm"
+
+  footer:
+    font_size: "7.4pt"
+    right_margin: "8mm"
+    bottom_margin: "6mm"

@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true" role="img">
+  <g transform="translate(12 12) scale(1.14639) translate(-12 -12)">
+  <circle cx="4.6" cy="4.7" r="1.8" fill="currentColor"/>
+    <rect x="3" y="8" width="3.2" height="12.2" rx="0.15" fill="currentColor"/>
+    <path fill="currentColor" d="M8.6 8H11.7v1.75c.78-1.19 2.17-1.97 4.1-1.97 3.54 0 5.2 2.33 5.2 5.84v6.58h-3.34v-6.18c0-1.86-.67-3.13-2.35-3.13-1.28 0-2.04.86-2.37 1.69-.12.3-.18.73-.18 1.16v6.46H8.6Z"/>
+</g>
+</svg>

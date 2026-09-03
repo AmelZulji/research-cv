@@ -1,0 +1,7 @@
+project:
+  title: "Research CV"
+
+execute:
+  echo: false
+  warning: false
+  message: false

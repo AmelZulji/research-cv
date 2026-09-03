@@ -1,0 +1,173 @@
+cv:
+  assets:
+    # Square portraits work best because the template applies a circular crop.
+    photo: "assets/headshot-placeholder.jpeg"
+
+  person:
+    name: "Your Name"
+    title: "Your Professional Title"
+
+  contact:
+    # `url` is optional. Entries with a URL become clickable in the PDF.
+    - label: "City, Country"
+      icon: "assets/location.svg"
+    - label: "name@example.org"
+      icon: "assets/email.svg"
+      url: "mailto:name@example.org"
+    - label: "github-username"
+      icon: "assets/github.svg"
+      url: "https://github.com/github-username"
+    - label: "@bluesky-handle.example"
+      icon: "assets/bluesky.svg"
+      url: "https://bsky.app/profile/bluesky-handle.example"
+    - label: "linkedin-profile"
+      icon: "assets/linkedin.svg"
+      url: "https://www.linkedin.com/in/linkedin-profile"
+
+  # Rename skillsets and categories to suit your field. The sample tags use
+  # varied lengths so you can see how a populated sidebar will wrap.
+  sidebar:
+    - title: "Skillset 1"
+      type: "skills"
+      groups:
+        - title: "Skill category 1"
+          items:
+            - "core method"
+            - "specialized technique"
+            - "sample processing"
+            - "quality control"
+            - "technical workflow"
+            - "documentation"
+        - title: "Skill category 2"
+          items:
+            - "experimental design"
+            - "method development"
+            - "project coordination"
+            - "problem solving"
+
+    - title: "Skillset 2"
+      type: "skills"
+      groups:
+        - title: "Skill category 3"
+          items:
+            - "data analysis"
+            - "statistical modeling"
+            - "data visualization"
+            - "machine learning"
+            - "reproducible research"
+        - title: "Tools & Platforms"
+          items:
+            - "Software 1"
+            - "Software 2"
+            - "Programming language"
+            - "Version control"
+            - "Computing platform"
+
+    - title: "Languages"
+      type: "tags"
+      items:
+        - "Language 1 · Native"
+        - "Language 2 · Fluent"
+        - "Language 3 · Intermediate"
+
+  # Briefly introduce yourself: what you do, how you do it, and why it matters.
+  # Mention your field, strongest capabilities, typical problems, and intended
+  # impact. Aim for approximately 60–90 words.
+  profile: "Include a short professional summary about yourself. Explain what you do, how you approach your work, and why your work matters. Mention your main field, strongest methods or capabilities, the types of problems you address, and the value or outcomes you aim to create. Keep the language specific, concise, and understandable to both specialist and broader audiences."
+
+  education:
+    # Put your most recent or highest qualification first.
+    - role: "Highest Degree in Subject"
+      dates: "Start–End"
+      organization: "Institution Name"
+    - role: "Previous Degree in Subject"
+      dates: "Start–End"
+      organization: "Institution Name"
+    - role: "Earlier Degree in Subject"
+      dates: "Start–End"
+      organization: "Institution Name"
+
+  experience:
+    # Use one entry per position. Within a position, group related achievements
+    # under projects or responsibility areas and emphasize actions and outcomes.
+    - role: "Current or Most Recent Position"
+      dates: "Start–present"
+      organization: "Organization Name · Department or Group"
+      projects:
+        - title: "Main project, research topic, or responsibility area"
+          bullets:
+            - "Describe what you accomplished, the problem you addressed, and the scale or context of the work."
+            - "Explain the methods, tools, or approach you used and why they were appropriate for the objective."
+            - "State the principal result, contribution, improvement, or insight produced by your work."
+            - "Include measurable impact, publications, presentations, or deliverables whenever possible."
+        - title: "Second project or collaborative responsibility"
+          bullets:
+            - "Summarize your individual contribution within the wider team or collaboration."
+            - "Mention leadership, mentoring, coordination, or communication responsibilities where relevant."
+
+    - role: "Previous Position"
+      dates: "Start–End"
+      organization: "Organization Name · Department or Group"
+      projects:
+        - title: "Major project, thesis topic, or area of responsibility"
+          bullets:
+            - "Describe the central objective and the work for which you were directly responsible."
+            - "Highlight a method, process, or capability you established or improved."
+            - "Conclude with the scientific, technical, organizational, or public-facing outcome."
+
+  publications:
+    # Add the forms of your own name that should appear in bold.
+    highlight_authors:
+      - "Your Name#"
+      - "Your Name"
+    sections:
+      # Rename, duplicate, or remove publication groups as needed.
+      - title: "Manuscripts or Preprints"
+        entries:
+          - authors: "Your Name#, Coauthor A#, Coauthor B, Senior Author*"
+            title: "Title of a manuscript, preprint, or work currently under consideration"
+            venue: "Journal or Repository"
+            status: "current status"
+      - title: "Selected Peer-Reviewed Publications"
+        entries:
+          - authors: "Your Name#, Coauthor A#, et al"
+            title: "Title describing the main finding of your first selected publication"
+            venue: "Journal Name"
+            details: "Year;volume:pages"
+          - authors: "Coauthor A, Coauthor B, Your Name, et al"
+            title: "Title of a collaborative publication relevant to your target role"
+            venue: "Journal Name"
+            details: "Year;volume:pages"
+          - authors: "Coauthor A, Your Name, Coauthor B, et al"
+            title: "Title illustrating another research area, method, or contribution"
+            venue: "Journal Name"
+            details: "Year;volume:pages"
+          - authors: "Your Name, Coauthor A, Senior Author*"
+            title: "Title of an important first-author or lead-contributor publication"
+            venue: "Journal Name"
+            details: "Year;volume:pages"
+          - authors: "Coauthor A, Coauthor B, Coauthor C, Your Name, et al"
+            title: "Title demonstrating your contribution to a broader collaboration"
+            venue: "Journal Name"
+            details: "Year;volume:pages"
+    notes:
+      - "# Equal contribution"
+      - "* Senior or corresponding author"
+
+  additional_sections:
+    # Rename these sections to cover teaching, mentoring, awards, service,
+    # invited talks, outreach, professional development, or other relevant work.
+    - title: "Additional Section 1"
+      entries:
+        - title: "Activity, course, workshop, award, or responsibility"
+          bullets:
+            - "Explain what you did, who it served, and the concrete contribution or outcome."
+        - title: "Second relevant activity or responsibility"
+          bullets:
+            - "Add the scope, audience, materials, recognition, or skills demonstrated by this activity."
+
+    - title: "Additional Section 2"
+      entries:
+        - title: "Role or activity · organization (Start–End)"
+          bullets:
+            - "Summarize your responsibilities and the value or impact of your contribution."

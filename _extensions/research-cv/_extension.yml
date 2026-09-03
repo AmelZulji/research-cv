@@ -1,0 +1,11 @@
+title: Research CV
+author: Amel Zulji
+version: 0.1.0
+quarto-required: ">=1.4.0"
+contributes:
+  formats:
+    typst:
+      template: cv-shell.typ
+      filters:
+        - cv.lua
+      keep-typ: true

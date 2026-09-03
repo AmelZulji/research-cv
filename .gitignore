@@ -1,0 +1,6 @@
+/.quarto/
+/_freeze/
+/*.pdf
+/*.typ
+
+**/*.quarto_ipynb

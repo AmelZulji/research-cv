@@ -1,0 +1,9 @@
+---
+title: "Curriculum Vitae"
+metadata-files:
+  - cv-theme.yml
+  - cv.yml
+format:
+  research-cv-typst:
+    keep-typ: true
+---
