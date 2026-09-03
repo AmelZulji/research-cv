@@ -1,7 +1,7 @@
 cv:
   assets:
     # Square portraits work best because the template applies a circular crop.
-    photo: "assets/headshot-placeholder.jpeg"
+    photo: "assets/photo.jpeg"
 
   person:
     name: "Your Name"
