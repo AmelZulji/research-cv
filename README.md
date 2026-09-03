@@ -1,85 +1,83 @@
 # Research CV
 
-A customizable two-page research CV built with Quarto and Typst. Content and
-appearance are kept separate: edit `cv.yml` for the CV and `cv-theme.yml` for
-the design.
+A customizable two-page research CV built with Quarto and Typst.
+
+The CV content and visual design are kept separate:
+
+- `cv.yml` controls the CV content
+- `cv-theme.yml` controls colors, typography, spacing, and layout
+- `assets/` contains the profile image and contact icons
 
 ## Requirements
 
 - Quarto 1.4 or newer
-- A Typst installation available to Quarto
-- Arial, or another font selected in `cv-theme.yml`
+- Arial, or another font configured in `cv-theme.yml`
 
-## Start a new CV
+## Create a new CV
 
-Once this repository is published on GitHub, create a complete working copy:
-
-```bash
-quarto use template OWNER/research-cv
-```
-
-Quarto copies the starter project and renames `template.qmd` to match the new
-directory. Alternatively, clone or download this repository directly.
-
-## Edit and render
-
-1. Replace the example content in `cv.yml`.
-2. Replace `assets/headshot-placeholder.png` and update contact links.
-3. Adjust colors, typography, spacing, and layout in `cv-theme.yml`.
-4. Render the document:
+Use this repository as a Quarto template:
 
 ```bash
-quarto render template.qmd
-```
+quarto use template AmelZulji/research-cv
+````
 
-The PDF is written next to the source document.
+Quarto will create a new project containing the complete CV template and all required files.
 
-## Use the format in an existing Quarto project
+## Customize the CV
 
-Install only the reusable format from GitHub:
+After creating the project:
+
+1. Edit `cv.yml` to add your CV content.
+2. Edit `cv-theme.yml` to customize colors, typography, spacing, and layout.
+3. Replace `assets/photo.jpeg` with your own profile image if desired. If you use a different filename or location, make sure to update the corresponding path in `cv.yml`.
+4. Add, remove, or replace contact icons in `assets/` as needed. Make sure the corresponding icon paths in `cv.yml` are kept up to date.
+
+## Render
+
+From inside the created project directory, run:
 
 ```bash
-quarto add OWNER/research-cv
+quarto render
 ```
 
-Then select it in a document:
-
-```yaml
----
-title: "Curriculum Vitae"
-metadata-files:
-  - cv-theme.yml
-  - cv.yml
-format:
-  research-cv-typst:
-    keep-typ: true
----
-```
-
-The document must provide `cv` and `cv_theme` metadata. The easiest setup is
-to copy `cv.yml`, `cv-theme.yml`, and `assets/` from the starter template.
+The rendered PDF will be written to the project directory.
 
 ## Project structure
 
 ```text
 research-cv/
 ├── template.qmd
+├── _quarto.yml
 ├── cv.yml
 ├── cv-theme.yml
 ├── assets/
-└── _extensions/research-cv/
-    ├── _extension.yml
-    ├── cv.lua
-    └── cv-shell.typ
+│   ├── photo.jpeg
+│   ├── email.svg
+│   ├── location.svg
+│   ├── github.svg
+│   ├── linkedin.svg
+│   └── bluesky.svg
+└── _extensions/
+    └── research-cv/
+        ├── _extension.yml
+        ├── cv.lua
+        └── cv-shell.typ
 ```
 
-The included name, institutions, dates, research descriptions, publications,
-and portrait are fictional examples intended only to demonstrate the template.
+`template.qmd` connects the CV content and theme files to the custom `research-cv-typst` format. In most cases, you only need to edit `cv.yml`, `cv-theme.yml`, and the files in `assets/`.
 
-## Theme colors
+## Customize the theme
 
-Change `colors.theme` to recolor the derived palette. Any derived expression
-can be replaced with a fixed hexadecimal color:
+The main theme color is defined in `cv-theme.yml`:
+
+```yaml
+colors:
+  theme: "#6F777A"
+```
+
+Several other colors are derived automatically from this value, so changing `colors.theme` recolors the CV consistently.
+
+Individual colors can also be overridden with fixed hexadecimal values:
 
 ```yaml
 colors:
@@ -87,6 +85,8 @@ colors:
   accent: "theme_color.darken(10%)"
   panel: "#EEF2F5"
 ```
+
+The same file also controls page layout, typography, section spacing, sidebar dimensions, header layout, publication styling, and footer settings.
 
 ## License
 
