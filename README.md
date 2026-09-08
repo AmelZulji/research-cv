@@ -2,6 +2,8 @@
 
 A customizable two-page research CV built with Quarto and Typst.
 
+[View the rendered example CV](template.pdf)
+
 The CV content and visual design are kept separate:
 
 - `cv.yml` controls the CV content
