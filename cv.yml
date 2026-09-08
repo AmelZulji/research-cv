@@ -40,7 +40,7 @@ cv:
             - "documentation"
         - title: "Skill category 2"
           items:
-            - "experimental design"
+            - "skill1"
             - "method development"
             - "project coordination"
             - "problem solving"
@@ -59,7 +59,7 @@ cv:
           items:
             - "Software 1"
             - "Software 2"
-            - "Programming language"
+            - "language 1"
             - "Version control"
             - "Computing platform"
 
@@ -122,37 +122,24 @@ cv:
       - "Your Name"
     sections:
       # Rename, duplicate, or remove publication groups as needed.
-      - title: "Manuscripts or Preprints"
+      - title: "Selected publications"
         entries:
-          - authors: "Your Name#, Coauthor A#, Coauthor B, Senior Author*"
-            title: "Title of a manuscript, preprint, or work currently under consideration"
-            venue: "Journal or Repository"
-            status: "current status"
-      - title: "Selected Peer-Reviewed Publications"
-        entries:
-          - authors: "Your Name#, Coauthor A#, et al"
-            title: "Title describing the main finding of your first selected publication"
+          - authors: "Your Name, Coauthor A, et al"
+            title: "Title"
             venue: "Journal Name"
             details: "Year;volume:pages"
-          - authors: "Coauthor A, Coauthor B, Your Name, et al"
-            title: "Title of a collaborative publication relevant to your target role"
+          - authors: "Coauthor A#, Your Name#, et al"
+            title: "Title"
             venue: "Journal Name"
             details: "Year;volume:pages"
-          - authors: "Coauthor A, Your Name, Coauthor B, et al"
-            title: "Title illustrating another research area, method, or contribution"
+          - authors: "Your Name, Supervising Author2\\*, Supervising Author1\\*"
+            title: "Title"
             venue: "Journal Name"
             details: "Year;volume:pages"
-          - authors: "Your Name, Coauthor A, Senior Author*"
-            title: "Title of an important first-author or lead-contributor publication"
-            venue: "Journal Name"
-            details: "Year;volume:pages"
-          - authors: "Coauthor A, Coauthor B, Coauthor C, Your Name, et al"
-            title: "Title demonstrating your contribution to a broader collaboration"
-            venue: "Journal Name"
-            details: "Year;volume:pages"
+
     notes:
-      - "# Equal contribution"
-      - "* Senior or corresponding author"
+      - "# Contributed equally"
+      - "* Jointly supervised"
 
   additional_sections:
     # Rename these sections to cover teaching, mentoring, awards, service,
