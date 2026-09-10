@@ -1,5 +1,7 @@
 project:
   title: "Research CV"
+  render:
+    - template.qmd
 
 execute:
   echo: false

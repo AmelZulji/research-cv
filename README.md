@@ -1,6 +1,6 @@
 # Research CV
 
-A customizable two-page research CV built with Quarto and Typst.
+A customizable research CV with a two-page PDF and responsive HTML output, built with Quarto and Typst.
 
 [View the rendered example CV](template.pdf)
 
@@ -39,10 +39,25 @@ After creating the project:
 From inside the created project directory, run:
 
 ```bash
-quarto render
+quarto render template.qmd --to all
 ```
 
-The rendered PDF will be written to the project directory.
+This writes `template.pdf` and `template.html` to the project directory. The HTML
+embeds its images and styles, so you can share or host the single file. Both
+formats read the same `cv.yml`; you do not need to maintain two copies of your CV.
+
+To render just one format:
+
+```bash
+quarto render template.qmd --to research-cv-html
+quarto render template.qmd --to research-cv-typst
+```
+
+HTML uses a responsive layout: columns on desktop and a single column on narrow
+screens. It shares the theme's base color and supports literal hex overrides for
+`text`, `panel`, `muted`, and `rule`. PDF typography, page measurements, and Typst
+color formulas remain specific to PDF; web spacing and typography are defined in
+`_extensions/research-cv/cv.css`. Use the PDF for the fixed two-page print layout.
 
 ## Project structure
 
@@ -63,10 +78,12 @@ research-cv/
     └── research-cv/
         ├── _extension.yml
         ├── cv.lua
+        ├── cv-html.lua
+        ├── cv.css
         └── cv-shell.typ
 ```
 
-`template.qmd` connects the CV content and theme files to the custom `research-cv-typst` format. In most cases, you only need to edit `cv.yml`, `cv-theme.yml`, and the files in `assets/`.
+`template.qmd` connects the CV content and theme files to the custom `research-cv-typst` and `research-cv-html` formats. In most cases, you only need to edit `cv.yml`, `cv-theme.yml`, and the files in `assets/`.
 
 ## Customize the theme
 

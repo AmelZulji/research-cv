@@ -1,0 +1,72 @@
+:root { color-scheme: light; }
+* { box-sizing: border-box; }
+body { margin: 0; background: #f4f5f6; }
+.research-cv {
+  --cv-theme: #6f777a;
+  --cv-text: #101010;
+  --cv-panel: color-mix(in srgb, var(--cv-theme) 16%, white);
+  --cv-muted: color-mix(in srgb, var(--cv-theme) 82%, black);
+  --cv-rule: color-mix(in srgb, var(--cv-theme) 38%, white);
+  max-width: 1100px;
+  margin: 32px auto;
+  background: white;
+  color: var(--cv-text);
+  font-family: Arial, sans-serif;
+  font-size: 15px;
+  line-height: 1.5;
+  box-shadow: 0 4px 28px #0000000d;
+}
+.research-cv h1, .research-cv h2, .research-cv h3, .research-cv h4,
+.research-cv p, .research-cv ul, .research-cv ol { margin: 0; }
+.research-cv h1 { font-size: clamp(28px, 3.5vw, 40px); line-height: 1.15; margin-bottom: 22px; }
+.research-cv h2 { font-size: 23px; line-height: 1.25; padding-bottom: 5px; border-bottom: 1px solid var(--cv-rule); margin-bottom: 14px; }
+.research-cv h3 { font-size: 16px; line-height: 1.4; }
+.research-cv h4 { font-size: 15px; line-height: 1.4; }
+.research-cv a { color: inherit; text-underline-offset: 3px; }
+.research-cv a:hover { text-decoration-thickness: 2px; }
+.research-cv a:focus-visible { outline: 2px solid currentColor; outline-offset: 4px; }
+.cv-header { display: grid; grid-template-columns: 28% 30% 1fr; gap: 28px; padding: 32px; background: var(--cv-panel); align-items: start; }
+.cv-photo { display: block; width: min(100%, 210px); aspect-ratio: 1; object-fit: cover; border-radius: 50%; justify-self: center; }
+.cv-contacts { list-style: none; padding: 0; display: grid; gap: 9px; font-size: 13px; color: var(--cv-muted); }
+.cv-contacts li { display: flex; align-items: center; gap: 10px; min-width: 0; }
+.cv-contacts img { width: 27px; height: 27px; padding: 5px; background: white; border: 1px solid var(--cv-rule); border-radius: 6px; flex-shrink: 0; }
+.cv-contacts a { overflow-wrap: anywhere; }
+.cv-profile { font-size: 14px; color: var(--cv-muted); }
+.cv-columns { display: grid; grid-template-columns: 33% 1fr; }
+.cv-sidebar { background: var(--cv-panel); padding: 30px 24px; }
+.cv-main { padding: 30px 32px; min-width: 0; }
+.cv-section + .cv-section { margin-top: 28px; }
+.cv-entry + .cv-entry { margin-top: 18px; }
+.cv-entry-heading { display: flex; justify-content: space-between; align-items: baseline; gap: 8px 20px; flex-wrap: wrap; }
+.cv-dates { color: var(--cv-muted); font-size: 13px; font-weight: bold; }
+.cv-meta { color: var(--cv-muted); font-size: 14px; }
+.cv-project { margin-top: 14px; }
+.research-cv ul:not(.cv-chips):not(.cv-contacts) { padding-left: 22px; margin-top: 5px; }
+.research-cv li + li { margin-top: 4px; }
+.cv-contacts li + li, .cv-chips li + li { margin-top: 0; }
+.research-cv .cv-chips { display: flex; flex-wrap: wrap; gap: 6px; padding: 0; list-style: none; margin: 8px 0 16px; }
+.cv-chips li { border: 1px solid var(--cv-rule); background: color-mix(in srgb, var(--cv-theme) 6%, white); color: var(--cv-muted); border-radius: 20px; padding: 3px 9px; font-size: 13px; max-width: 100%; overflow-wrap: anywhere; }
+.cv-lower { padding: 32px; border-top: 1px solid var(--cv-rule); }
+.research-cv .cv-publications { padding-left: 25px; margin: 8px 0 14px; }
+.cv-publications li { padding-left: 4px; }
+.cv-publications li + li { margin-top: 10px; }
+.cv-note { font-size: 12px; color: var(--cv-muted); }
+@media (max-width: 760px) {
+  .research-cv { margin: 0; box-shadow: none; }
+  .cv-header { grid-template-columns: 150px 1fr; gap: 24px; padding: 24px; }
+  .cv-profile { grid-column: 1 / -1; }
+  .cv-columns { grid-template-columns: 1fr; }
+  .cv-main { grid-row: 1; padding: 24px; }
+  .cv-sidebar, .cv-lower { padding: 24px; }
+}
+@media (max-width: 420px) {
+  .cv-header { grid-template-columns: 1fr; }
+  .cv-photo { width: 140px; justify-self: start; }
+}
+@media print {
+  body { background: white; }
+  .research-cv { margin: 0; max-width: none; box-shadow: none; font-size: 10pt; }
+  .cv-header, .cv-sidebar, .cv-main, .cv-lower { padding: 16px; }
+  .cv-entry, .cv-publications li { break-inside: avoid; }
+  .research-cv h2, .research-cv h3, .research-cv h4 { break-after: avoid; }
+}

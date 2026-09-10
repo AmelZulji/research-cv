@@ -28,23 +28,23 @@ cv_theme:
   header:
     height: "56mm"
     photo:
-      x: "14mm"
+      x: "13.25mm"
       y: "7mm"
       width: "42mm"
       height: "42mm"
     identity:
-      name_x: "81mm"
+      name_x: "75mm"
       name_y: "6.5mm"
       name_width: "48mm"
       name_font_size: "24pt"
-      contacts_x: "74mm"
+      contacts_x: "68mm"
       contacts_y: "19mm"
       contacts_width: "62mm"
       contacts_content_width: "48mm"
       contacts_font_size: "8.2pt"
       contact_row_space_after: "0.75mm"
     profile:
-      x: "144mm"
+      x: "140mm"
       y: "6.5mm"
       width: "62mm"
       font_size: "9.2pt"
@@ -59,8 +59,8 @@ cv_theme:
     space_between_text_and_divider: "0.8mm"
 
   main_column:
-    x: "74.7mm"
-    y: "62.19mm"
+    x: "75mm"
+    y: "62mm"
     width: "127mm"
     role_font_size: "10.8pt"
     metadata_font_size: "9.1pt"
@@ -71,7 +71,7 @@ cv_theme:
     organization_space_after: "2.8mm"
     project_title_space_after: "1.35mm"
     project_space_after: "3.5mm"
-    education_entry_space_after: "1.6mm"
+    education_entry_space_after: "2.6mm"
     bullets:
       item_spacing: "1.8mm"
       marker_indent: "2.9mm"
@@ -80,9 +80,9 @@ cv_theme:
   sidebar:
     panel_width: "68.5mm"
     # Equal left and right padding within the sidebar panel.
-    content_x: "3.3mm"
-    content_y: "62.19mm"
-    content_width: "61.9mm"
+    content_x: "5mm"
+    content_y: "62mm"
+    content_width: "58.5mm"
     label_font_size: "9.2pt"
     detail_font_size: "8.2pt"
     space_between_sections: "5.5mm"
@@ -98,9 +98,9 @@ cv_theme:
       corner_radius: "2.2mm"
 
   second_page:
-    content_x: "13.99mm"
-    content_y: "9.12mm"
-    content_width: "181.92mm"
+    content_x: "14mm"
+    content_y: "10mm"
+    content_width: "182mm"
     space_after_publications: "9mm"
 
   publications:

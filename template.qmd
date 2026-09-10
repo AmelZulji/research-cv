@@ -4,6 +4,7 @@ metadata-files:
   - cv-theme.yml
   - cv.yml
 format:
+  research-cv-html: default
   research-cv-typst:
     keep-typ: true
 ---

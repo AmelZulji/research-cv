@@ -5,3 +5,7 @@
 /*.typ
 
 **/*.quarto_ipynb
+/template.html
+/template_files/
+/README.html
+/README_files/

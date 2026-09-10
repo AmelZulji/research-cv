@@ -4,6 +4,15 @@ version: 0.1.0
 quarto-required: ">=1.4.0"
 contributes:
   formats:
+    html:
+      minimal: true
+      css: cv.css
+      filters:
+        - cv-html.lua
+      embed-resources: true
+      page-layout: custom
+      title-block-style: none
+      toc: false
     typst:
       template: cv-shell.typ
       filters:
