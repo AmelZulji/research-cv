@@ -55,8 +55,8 @@ cv_theme:
     space_after_heading: "2.4mm"
     space_between_sections: "4mm"
     divider_width: "100%"
-    divider_thickness: "1pt"
-    space_between_text_and_divider: "0.8mm"
+    divider_thickness: "1.5pt"
+    space_between_text_and_divider: "1.3mm"
 
   main_column:
     x: "75mm"
