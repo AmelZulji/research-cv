@@ -1,112 +1,55 @@
 # Research CV
 
-A customizable research CV with a two-page PDF and responsive HTML output, built with Quarto and Typst.
+A Quarto CV template with one Typst layout, a two-page PDF, and an HTML PDF viewer.
+Edit `cv.yml` for content and `cv-theme.yml` for the design.
 
-[View the rendered example CV](template.pdf)
+[View the example PDF](template.pdf)
 
-The CV content and visual design are kept separate:
+## Get started
 
-- `cv.yml` controls the CV content
-- `cv-theme.yml` controls colors, typography, spacing, and layout
-- `assets/` contains the profile image and contact icons
-
-## Requirements
-
-- Quarto 1.4 or newer
-- Arial, or another font configured in `cv-theme.yml`
-
-## Create a new CV
-
-Use this repository as a Quarto template:
+Install Quarto 1.4 or newer and the font configured in `cv-theme.yml` (Arial by
+default). Then create a project:
 
 ```bash
 quarto use template AmelZulji/research-cv
-````
-
-Quarto will create a new project containing the complete CV template and all required files.
-
-## Customize the CV
-
-After creating the project:
-
-1. Edit `cv.yml` to add your CV content.
-2. Edit `cv-theme.yml` to customize colors, typography, spacing, and layout.
-3. Replace `assets/photo.jpeg` with your own profile image if desired. If you use a different filename or location, make sure to update the corresponding path in `cv.yml`.
-4. Add, remove, or replace contact icons in `assets/` as needed. Make sure the corresponding icon paths in `cv.yml` are kept up to date.
-
-## Render
-
-From inside the created project directory, run:
-
-```bash
-quarto render template.qmd --to all
 ```
 
-This writes `template.pdf` and `template.html` to the project directory. The HTML
-embeds its images and styles, so you can share or host the single file. Both
-formats read the same `cv.yml`; you do not need to maintain two copies of your CV.
+From your new project directory:
 
-To render just one format:
+1. Edit `cv.yml` with your profile, contacts, education, experience, and publications.
+2. Replace `assets/photo.jpeg` and update image or icon paths in `cv.yml` as needed.
+3. Adjust `cv-theme.yml` for colors, fonts, sizes, spacing, and column positions.
+4. Render both formats:
 
 ```bash
 quarto render template.qmd --to research-cv-html
-quarto render template.qmd --to research-cv-typst
 ```
 
-HTML uses a responsive layout: columns on desktop and a single column on narrow
-screens. It shares the theme's base color and supports literal hex overrides for
-`text`, `panel`, `muted`, and `rule`. PDF typography, page measurements, and Typst
-color formulas remain specific to PDF; web spacing and typography are defined in
-`_extensions/research-cv/cv.css`. Use the PDF for the fixed two-page print layout.
+This rebuilds `template.pdf` and creates `template.html`, which displays that PDF
+with open and download links. Keep both files together when sharing or hosting;
+the viewer's CSS is embedded in the HTML. Browsers without inline PDF support
+can use the open/download links.
 
-## Project structure
+For just the PDF, use `--to research-cv-typst`. The existing `--to all` command
+also works, but compiles the PDF for each format.
 
-```text
-research-cv/
-├── template.qmd
-├── _quarto.yml
-├── cv.yml
-├── cv-theme.yml
-├── assets/
-│   ├── photo.jpeg
-│   ├── email.svg
-│   ├── location.svg
-│   ├── github.svg
-│   ├── linkedin.svg
-│   └── bluesky.svg
-└── _extensions/
-    └── research-cv/
-        ├── _extension.yml
-        ├── cv.lua
-        ├── cv-html.lua
-        ├── cv.css
-        └── cv-shell.typ
-```
+## Design and layout
 
-`template.qmd` connects the CV content and theme files to the custom `research-cv-typst` and `research-cv-html` formats. In most cases, you only need to edit `cv.yml`, `cv-theme.yml`, and the files in `assets/`.
+Change `cv_theme.colors.theme` in `cv-theme.yml` to recolor both outputs. Palette
+entries accept hex colors or `theme_color.lighten(N%)` / `theme_color.darken(N%)`.
+Use lengths such as `mm`, `pt`, and `em` for shared layout settings.
 
-## Customize the theme
+The HTML displays the actual PDF, so fonts, spacing, wrapping, page numbers,
+and pagination come from the same layout. On mobile, readers zoom the fixed
+pages rather than getting a separate responsive CV layout. The PDF uses a fixed
+two-page layout, so check for overflow after adding content.
 
-The main theme color is defined in `cv-theme.yml`:
-
-```yaml
-colors:
-  theme: "#6F777A"
-```
-
-Several other colors are derived automatically from this value, so changing `colors.theme` recolors the CV consistently.
-
-Individual colors can also be overridden with fixed hexadecimal values:
-
-```yaml
-colors:
-  theme: "#526D82"
-  accent: "theme_color.darken(10%)"
-  panel: "#EEF2F5"
-```
-
-The same file also controls page layout, typography, section spacing, sidebar dimensions, header layout, publication styling, and footer settings.
+`template.qmd` selects the metadata files and output formats. In
+`_extensions/research-cv/`, `cv.lua` is the only CV renderer and `cv-theme.lua`
+supplies its theme defaults. `cv-html.lua` calls that renderer, compiles the PDF
+using Quarto's bundled Typst, and creates the viewer. `cv.css` styles only the
+viewer toolbar and frame.
 
 ## License
 
-MIT
+[MIT](LICENSE)

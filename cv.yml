@@ -8,7 +8,7 @@ cv:
     title: "Your Professional Title"
 
   contact:
-    # `url` is optional. Entries with a URL become clickable in the PDF.
+    # `url` is optional. Entries with a URL become clickable in both outputs.
     - label: "City, Country"
       icon: "assets/location.svg"
     - label: "name@example.org"
