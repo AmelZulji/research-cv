@@ -1,160 +1,197 @@
-cv:
-  assets:
-    # Square portraits work best because the template applies a circular crop.
-    photo: "assets/photo.jpeg"
+# ============================================================
+# IDENTITY
+# ============================================================
 
-  person:
-    name: "Your Name"
-    title: "Your Professional Title"
+# Square images work best because the template applies
+# a circular crop.
+photo: "assets/photo.jpg"
 
-  contact:
-    # `url` is optional. Entries with a URL become clickable in both outputs.
-    - label: "City, Country"
-      icon: "assets/location.svg"
-    - label: "name@example.org"
-      icon: "assets/email.svg"
-      url: "mailto:name@example.org"
-    - label: "github-username"
-      icon: "assets/github.svg"
-      url: "https://github.com/github-username"
-    - label: "@bluesky-handle.example"
-      icon: "assets/bluesky.svg"
-      url: "https://bsky.app/profile/bluesky-handle.example"
-    - label: "linkedin-profile"
-      icon: "assets/linkedin.svg"
-      url: "https://www.linkedin.com/in/linkedin-profile"
+name: "Your Name"
+title: "Your Professional Title"
 
-  # Rename skillsets and categories to suit your field. The sample tags use
-  # varied lengths so you can see how a populated sidebar will wrap.
-  sidebar:
-    - title: "Skillset 1"
-      type: "skills"
-      groups:
-        - title: "Skill category 1"
-          items:
-            - "core method"
-            - "specialized technique"
-            - "sample processing"
-            - "quality control"
-            - "technical workflow"
-            - "documentation"
-        - title: "Skill category 2"
-          items:
-            - "skill1"
-            - "method development"
-            - "project coordination"
-            - "problem solving"
 
-    - title: "Skillset 2"
-      type: "skills"
-      groups:
-        - title: "Skill category 3"
-          items:
-            - "data analysis"
-            - "statistical modeling"
-            - "data visualization"
-            - "machine learning"
-            - "reproducible research"
-        - title: "Tools & Platforms"
-          items:
-            - "Software 1"
-            - "Software 2"
-            - "language 1"
-            - "Version control"
-            - "Computing platform"
+# Contact keys correspond to:
+# assets/location.svg
+# assets/email.svg
+# assets/github.svg
+# assets/bluesky.svg
+# assets/linkedin.svg
+contact:
+  location: "City, Country"
+  email: "name@example.org"
+  github: "github-username"
+  bluesky: "@bluesky-handle.example"
+  linkedin: "linkedin-profile"
 
-    - title: "Languages"
-      type: "tags"
-      items:
-        - "Language 1 · Native"
-        - "Language 2 · Fluent"
-        - "Language 3 · Intermediate"
 
-  # Briefly introduce yourself: what you do, how you do it, and why it matters.
-  # Mention your field, strongest capabilities, typical problems, and intended
-  # impact. Aim for approximately 60–90 words.
-  profile: "Include a short professional summary about yourself. Explain what you do, how you approach your work, and why your work matters. Mention your main field, strongest methods or capabilities, the types of problems you address, and the value or outcomes you aim to create. Keep the language specific, concise, and understandable to both specialist and broader audiences."
+# Aim for approximately 50–80 words.
+profile: >
+  Professional working at the intersection of research, technology, and
+  problem solving. Experienced in developing rigorous approaches to complex
+  questions, working across disciplines, and translating technical work into
+  clear and useful outcomes. Combines subject-matter expertise with analytical
+  thinking, reproducible workflows, and collaborative project work.
 
-  education:
-    # Put your most recent or highest qualification first.
-    - role: "Highest Degree in Subject"
-      dates: "Start–End"
-      organization: "Institution Name"
-    - role: "Previous Degree in Subject"
-      dates: "Start–End"
-      organization: "Institution Name"
-    - role: "Earlier Degree in Subject"
-      dates: "Start–End"
-      organization: "Institution Name"
 
-  experience:
-    # Use one entry per position. Within a position, group related achievements
-    # under projects or responsibility areas and emphasize actions and outcomes.
-    - role: "Current or Most Recent Position"
-      dates: "Start–present"
-      organization: "Organization Name · Department or Group"
-      projects:
-        - title: "Main project, research topic, or responsibility area"
-          bullets:
-            - "Describe what you accomplished, the problem you addressed, and the scale or context of the work."
-            - "Explain the methods, tools, or approach you used and why they were appropriate for the objective."
-            - "State the principal result, contribution, improvement, or insight produced by your work."
-            - "Include measurable impact, publications, presentations, or deliverables whenever possible."
-        - title: "Second project or collaborative responsibility"
-          bullets:
-            - "Summarize your individual contribution within the wider team or collaboration."
-            - "Mention leadership, mentoring, coordination, or communication responsibilities where relevant."
+# ============================================================
+# SKILLS
+#
+# Structure:
+# Major skill area
+#   → skill category
+#       → tags
+# ============================================================
 
-    - role: "Previous Position"
-      dates: "Start–End"
-      organization: "Organization Name · Department or Group"
-      projects:
-        - title: "Major project, thesis topic, or area of responsibility"
-          bullets:
-            - "Describe the central objective and the work for which you were directly responsible."
-            - "Highlight a method, process, or capability you established or improved."
-            - "Conclude with the scientific, technical, organizational, or public-facing outcome."
+skills:
+  Domain Expertise:
+    Core Methods:
+      - "core method"
+      - "specialized technique"
+      - "experimental design"
+      - "quality control"
 
-  publications:
-    # Add the forms of your own name that should appear in bold.
-    highlight_authors:
-      - "Your Name#"
-      - "Your Name"
-    sections:
-      # Rename, duplicate, or remove publication groups as needed.
-      - title: "Selected publications"
-        entries:
-          - authors: "Your Name, Coauthor A, et al"
-            title: "Title"
-            venue: "Journal Name"
-            details: "Year;volume:pages"
-          - authors: "Coauthor A#, Your Name#, et al"
-            title: "Title"
-            venue: "Journal Name"
-            details: "Year;volume:pages"
-          - authors: "Your Name, Supervising Author2\\*, Supervising Author1\\*"
-            title: "Title"
-            venue: "Journal Name"
-            details: "Year;volume:pages"
+    Applied Methods:
+      - "sample processing"
+      - "method development"
+      - "technical workflows"
+      - "documentation"
 
-    notes:
-      - "# Contributed equally"
-      - "* Jointly supervised"
+  Data & Technology:
+    Analysis:
+      - "data analysis"
+      - "statistical modeling"
+      - "data visualization"
+      - "machine learning"
 
-  additional_sections:
-    # Rename these sections to cover teaching, mentoring, awards, service,
-    # invited talks, outreach, professional development, or other relevant work.
-    - title: "Additional Section 1"
-      entries:
-        - title: "Activity, course, workshop, award, or responsibility"
-          bullets:
-            - "Explain what you did, who it served, and the concrete contribution or outcome."
-        - title: "Second relevant activity or responsibility"
-          bullets:
-            - "Add the scope, audience, materials, recognition, or skills demonstrated by this activity."
+    Tools & Platforms:
+      - "Software 1"
+      - "Software 2"
+      - "Programming language"
+      - "Version control"
+      - "Computing platform"
 
-    - title: "Additional Section 2"
-      entries:
-        - title: "Role or activity · organization (Start–End)"
-          bullets:
-            - "Summarize your responsibilities and the value or impact of your contribution."
+
+# ============================================================
+# LANGUAGES
+# ============================================================
+
+languages:
+  - "Language 1 · Native"
+  - "Language 2 · Fluent"
+  - "Language 3 · Intermediate"
+
+
+# ============================================================
+# EDUCATION
+#
+# Most recent / highest qualification first.
+# ============================================================
+
+education:
+  - degree: "Highest Degree in Subject"
+    institution: "Institution Name"
+    dates: "Start–End"
+
+  - degree: "Previous Degree in Subject"
+    institution: "Institution Name"
+    dates: "Start–End"
+
+  - degree: "Earlier Degree in Subject"
+    institution: "Institution Name"
+    dates: "Start–End"
+
+
+# ============================================================
+# EXPERIENCE
+#
+# Use one record per position.
+# Within each position, organize achievements into projects
+# or responsibility areas.
+# ============================================================
+
+experience:
+  - role: "Current or Most Recent Position"
+    organization: "Organization Name · Department or Group"
+    dates: "Start–present"
+
+    projects:
+      - title: "Main project, research topic, or responsibility area"
+        bullets:
+          - "Describe the problem you addressed, your individual contribution, and the scale or context of the work."
+          - "Explain the methods, tools, or approach you used and why they were appropriate for the objective."
+          - "State the principal result, improvement, insight, or deliverable produced by your work."
+          - "Include measurable impact, publications, presentations, products, or other concrete outcomes where possible."
+
+      - title: "Second project or collaborative responsibility"
+        bullets:
+          - "Summarize your contribution within the wider team or collaboration."
+          - "Mention leadership, mentoring, coordination, communication, or stakeholder responsibilities where relevant."
+
+  - role: "Previous Position"
+    organization: "Organization Name · Department or Group"
+    dates: "Start–End"
+
+    projects:
+      - title: "Major project, thesis topic, or responsibility area"
+        bullets:
+          - "Describe the central objective and the work for which you were directly responsible."
+          - "Highlight a method, process, workflow, or capability you established or improved."
+          - "Conclude with the scientific, technical, organizational, or public-facing outcome."
+
+
+# ============================================================
+# PUBLICATIONS
+#
+# Keep entries concise. The current renderer displays:
+# title
+# authors
+# details
+# ============================================================
+
+publications:
+  - title: "Title of First Publication"
+    authors: "Your Name, Coauthor A, Coauthor B, et al."
+    details: "Journal Name · Year; volume:pages"
+
+  - title: "Title of Second Publication"
+    authors: "Coauthor A, Your Name, Coauthor B, et al."
+    details: "Journal Name · Year; volume:pages"
+
+  - title: "Title of Third Publication"
+    authors: "Your Name, Coauthor A, Supervising Author"
+    details: "Journal Name · Year; volume:pages"
+
+
+# ============================================================
+# ADDITIONAL SECTIONS
+#
+# Rename, remove, or add sections as needed.
+# Examples:
+# Teaching & Mentoring
+# Awards & Honors
+# Invited Talks
+# Professional Service
+# Outreach
+# Training
+# ============================================================
+
+additional:
+  Teaching & Mentoring:
+    - title: "Course, workshop, or mentoring activity"
+      description: >
+        Briefly describe your role, the audience, and the principal contribution
+        or outcome.
+
+    - title: "Second teaching or mentoring activity"
+      description: >
+        Summarize the scope of the activity and any materials, supervision, or
+        responsibilities you provided.
+
+  Awards & Activities:
+    - title: "Award, distinction, or professional activity"
+      description: >
+        Briefly state the recognition, role, organization, and why it is relevant.
+
+    - title: "Professional service or outreach activity"
+      description: >
+        Summarize your responsibilities and the value or impact of your contribution.
