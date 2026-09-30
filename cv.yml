@@ -1,7 +1,7 @@
 photo: "assets/photo.jpg"
 
-name: "Your Name"
-title: "Your Professional Title"
+name: "Name Lastname"
+title: "Professional Title"
 location: "City, Country"
 
 contact:
@@ -59,47 +59,40 @@ languages:
   - "Language 3 · Intermediate"
 
 
-education:
-  - degree: "Degree or Qualification 1"
-    institution: "Institution Name"
-    dates: "year–year"
+main:
+  Education:
+    - title: "Degree or Qualification 1"
+      organization: "Institution Name"
+      dates: "year–year"
 
-  - degree: "Degree or Qualification 2"
-    institution: "Institution Name"
-    dates: "year–year"
+    - title: "Degree or Qualification 2"
+      organization: "Institution Name"
+      dates: "year–year"
 
-  - degree: "Degree or Qualification 3"
-    institution: "Institution Name"
-    dates: "year–year"
+  Experience:
+    - title: "Position or Role 1"
+      organization: "Organization Name · Department or Group"
+      dates: "year–year"
 
+      items:
+        - title: "Project, responsibility, or focus area 1"
+          bullets:
+            - "Describe your main responsibility or contribution."
+            - "Describe the methods, tools, or approach used."
+            - "Describe the result, outcome, or impact."
 
-experience:
-  - role: "Position or Role 1"
-    organization: "Organization Name · Department or Group"
-    dates: "year–year"
+        - title: "Project, responsibility, or focus area 2"
+          bullets:
+            - "Describe another contribution or responsibility."
 
-    projects:
-      - title: "Project, responsibility, or focus area 1"
-        bullets:
-          - "Describe your main responsibility, contribution, or achievement."
-          - "Describe the methods, tools, or approach used."
-          - "Describe the result, outcome, or impact of the work."
+    - title: "Position or Role 2"
+      organization: "Organization Name · Department or Group"
+      dates: "year–year"
 
-      - title: "Project, responsibility, or focus area 2"
-        bullets:
-          - "Describe your contribution to this project or responsibility."
-          - "Mention relevant collaboration, leadership, coordination, or other responsibilities."
-
-  - role: "Position or Role 2"
-    organization: "Organization Name · Department or Group"
-    dates: "year–year"
-
-    projects:
-      - title: "Project, responsibility, or focus area 1"
-        bullets:
-          - "Describe the objective and your individual contribution."
-          - "Highlight a relevant method, process, or capability."
-          - "Describe the resulting outcome or impact."
+      items:
+        - title: "Project, responsibility, or focus area 1"
+          bullets:
+            - "Describe the objective and your individual contribution."
 
 
 publications:

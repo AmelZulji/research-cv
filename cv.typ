@@ -2,6 +2,9 @@
 
 #let cv = yaml("cv.yml")
 
+#let publications = cv.at("publications", default: ())
+#let additional = cv.at("additional", default: (:))
+
 
 // ============================================================
 // DESIGN SYSTEM
@@ -9,12 +12,12 @@
 
 // Typography
 #let type = (
-  font: "New Computer Modern",
-  body: 10pt,
+  font: "Arial",
+  body: 9.5pt,
 
   // Relative to body size
   title: 2em,
-  heading: 1.4em,
+  heading: 1.35em,
   subheading: 1.1em,
   minor: 0.95em,
   meta: 0.9em,
@@ -28,6 +31,7 @@
   text: base_color.darken(85%),
   muted: base_color.darken(18%),
   panel: base_color.lighten(88%),
+  tag: base_color.lighten(95%),
   rule: base_color.lighten(55%),
 )
 
@@ -36,33 +40,34 @@
 #let layout = (
   page_height: 297mm,
 
-  // Fixed height of the header
+  // Fixed header height
   header_height: 48mm,
 
-  // Shared width of the sidebar and photo column
+  // Physical width of the sidebar
   sidebar_width: 70mm,
 
-  // Padding inside major grid cells
+  // Fixed width of the profile region
+  profile_width: 68mm,
+
+  // Outer page/header padding
   inset: 7mm,
 
-  // Reserved right-hand column for dates
+  // Reserved date rail in main entries
   date_width: 23mm,
-
-  // Space between main entry content and date column
   date_gap: 0mm,
 )
 
 
-// Photo size is constrained by both the header and sidebar.
-#let photo_size = calc.min(
-  layout.header_height - 2 * layout.inset,
-  layout.sidebar_width - 2 * layout.inset,
+// Normal prose rhythm
+#let prose_style = (
+  leading: 0.5em,
+  spacing: 0.35em,
 )
 
 
 // General spacing rhythm
 #let space = (
-  // Elements belonging closely together
+  // Closely related elements
   tight: 0.3em,
 
   // Related blocks
@@ -74,7 +79,7 @@
   // Major sections
   section: 1.4em,
 
-  // Organization / institution → first project
+  // Entry header → nested content
   entry_body: 0.85em,
 )
 
@@ -85,11 +90,9 @@
 
 // Tag appearance
 #let tag_style = (
-  // Padding inside each tag
   pad_x: 0.4em,
   pad_y: 0.3em,
 
-  // Spacing between tags
   gap_x: 0.15em,
   gap_y: 0.2em,
 
@@ -99,16 +102,13 @@
 
 // Bullet-list appearance
 #let bullet_style = (
-  // Line spacing within one wrapped bullet
+  // Wrapped lines within one bullet
   leading: 0.2em,
 
-  // Spacing between separate bullets
+  // Space between separate bullets
   gap: 0.4em,
 
-  // Bullet marker position
   indent: 0pt,
-
-  // Distance between bullet marker and text
   body_indent: 0.5em,
 )
 
@@ -118,6 +118,32 @@
   icon_size: 1.6em,
   gap: 1em,
 )
+
+
+// Footer
+#let footer_style = (
+  rule_width: 0.5pt,
+  gap: 0.35em,
+)
+
+
+// ============================================================
+// HEADER GEOMETRY
+// ============================================================
+
+// Photo size is limited by both header height and sidebar width.
+#let photo_size = calc.min(
+  layout.header_height - 2 * layout.inset,
+  layout.sidebar_width - 2 * layout.inset,
+)
+
+
+// The photo center is locked to the center of the sidebar.
+// The first header track ends at the visible right edge
+// of the photo rather than at the sidebar boundary.
+#let photo_center = layout.sidebar_width / 2
+#let photo_radius = photo_size / 2
+#let header_photo_track = photo_center + photo_radius - layout.inset
 
 
 // ============================================================
@@ -140,20 +166,19 @@
   lang: "en",
 )
 
-// Default rhythm for normal prose.
 #set par(
-  leading: 0.5em,
-  spacing: 0.35em,
+  leading: prose_style.leading,
+  spacing: prose_style.spacing,
 )
 
-// Structural spacing is controlled by the components below.
+// Components explicitly control their own vertical spacing.
 #set block(
   spacing: 0pt,
 )
 
 
 // ============================================================
-// TYPOGRAPHIC HIERARCHY
+// TYPOGRAPHY
 // ============================================================
 
 // Name
@@ -185,7 +210,7 @@
 ]
 
 
-// Degree / position
+// Main entry title
 #let subheading(body) = text(
   size: type.subheading,
   weight: "bold",
@@ -201,7 +226,7 @@
 )
 
 
-// Dates / organizations / secondary information
+// Dates, organizations, location, and secondary information
 #let meta(body) = text(
   size: type.meta,
   fill: color.muted,
@@ -225,10 +250,8 @@
 ]
 
 
-// Education / experience entry.
-//
-// Main content uses the flexible left column.
-// Dates use a dedicated fixed-width rail on the right.
+// Main-column entry.
+// The right-hand date rail remains reserved for nested content.
 #let entry(label, date, detail, body: none) = block(
   below: if body == none {
     space.related
@@ -287,10 +310,8 @@
 ]
 
 
-// Bullet list.
-//
-// Paragraph leading controls wrapped lines within one bullet.
-// List spacing controls separation between individual bullets.
+// Wrapped lines within one bullet and spacing between
+// separate bullets are controlled independently.
 #let bullets(values) = [
   #set par(
     justify: true,
@@ -319,13 +340,13 @@
   ),
 
   radius: tag_style.radius,
-  fill: white,
+  fill: color.tag,
 )[
   #meta(body)
 ]
 
 
-// Inline collection of wrapping tags
+// Wrapping collection of tags
 #let tags(values) = [
   #set par(
     leading: tag_style.gap_y,
@@ -339,21 +360,26 @@
 ]
 
 
-// Clickable contact icon.
-// Icon path and destination are defined in cv.yml.
-#let contact(entry) = link(
-  entry.url,
-
-  image(
+// Contact icons take their source and optional destination
+// directly from cv.yml.
+#let contact(entry) = {
+  let icon = image(
     entry.icon,
     width: contact_style.icon_size,
     height: contact_style.icon_size,
     fit: "contain",
-  ),
-)
+    alt: entry.at("alt", default: none),
+  )
+
+  if "url" in entry {
+    link(entry.url, icon)
+  } else {
+    icon
+  }
+}
 
 
-// Contact icons are rendered in one centered horizontal row.
+// Contact icons in one centered horizontal row
 #let contacts(values) = align(center)[
   #grid(
     columns: (auto,) * values.len(),
@@ -365,73 +391,226 @@
 ]
 
 
+// Minimal footer used on the second page.
+#let footer() = block(
+  width: 100%,
+
+  inset: (
+    x: layout.inset,
+    bottom: layout.inset,
+  ),
+)[
+  #stack(
+    spacing: footer_style.gap,
+
+    line(
+      length: 100%,
+      stroke: footer_style.rule_width + color.rule,
+    ),
+
+    grid(
+      columns: (
+        1fr,
+        auto,
+      ),
+
+      align: (
+        left + horizon,
+        right + horizon,
+      ),
+
+      meta(cv.name),
+
+      context meta(
+        counter(page).display(
+          "1 / 1",
+          both: true,
+        )
+      ),
+    ),
+  )
+]
+
+
+// ============================================================
+// DATA RENDERERS
+// ============================================================
+
+// Sidebar skill sections
+#let render_skills(skills) = [
+  #for (skill_section, groups) in skills [
+    #section(
+      skill_section,
+
+      [
+        #for (group_name, values) in groups [
+          #item(
+            group_name,
+            tags(values),
+          )
+        ]
+      ],
+    )
+  ]
+]
+
+
+// Nested items inside a main entry
+#let render_nested(items) = [
+  #for nested_item in items [
+    #item(
+      nested_item.title,
+      bullets(nested_item.bullets),
+    )
+  ]
+]
+
+
+// Generic main-column sections
+#let render_main(sections) = [
+  #for (section_name, entries) in sections [
+    #section(
+      section_name,
+
+      [
+        #for entry_data in entries [
+          #let nested = entry_data.at(
+            "items",
+            default: (),
+          )
+
+          #entry(
+            entry_data.title,
+            entry_data.dates,
+            entry_data.organization,
+
+            body: if nested.len() == 0 {
+              none
+            } else {
+              render_nested(nested)
+            },
+          )
+        ]
+      ],
+    )
+  ]
+]
+
+
+// Publication list
+#let render_publications(entries) = [
+  #for publication in entries [
+    #item(
+      publication.title,
+
+      [
+        #publication.authors
+        #linebreak()
+        #meta(publication.details)
+      ],
+    )
+  ]
+]
+
+
+// Additional user-defined sections
+#let render_additional(sections) = [
+  #for (section_name, entries) in sections [
+    #section(
+      section_name,
+
+      [
+        #for entry_data in entries [
+          #item(
+            entry_data.title,
+            entry_data.description,
+          )
+        ]
+      ],
+    )
+  ]
+]
+
+
 // ============================================================
 // HEADER
 // ============================================================
 
-// The first column exactly matches the sidebar width.
-// Identity uses 1fr and the profile 1.5fr.
-// Adjust these fractions if the profile needs more or less width.
+// The outer grid provides one 7 mm inset around the complete
+// header. The inner grid has no padding or gutter.
+//
+// The photo remains centered on the sidebar axis, while the
+// identity begins at the visible right edge of the photo.
 #grid(
-  columns: (
-    layout.sidebar_width,
-    1fr,
-    1.5fr,
-  ),
-
-  rows: (
-    layout.header_height,
-  ),
+  columns: (1fr,),
+  rows: (layout.header_height,),
 
   inset: layout.inset,
   fill: color.panel,
 
-  align: (
-    center + horizon,
-    center + horizon,
-    left + horizon,
-  ),
-
-  // Photo
   [
-    #box(
-      width: photo_size,
-      height: photo_size,
-      radius: 50%,
-      clip: true,
-    )[
-      #image(
-        cv.photo,
-        width: 100%,
-        height: 100%,
-        fit: "cover",
-      )
-    ]
-  ],
-
-  // Identity
-  [
-    #stack(
-      spacing: space.related,
-
-      stack(
-        spacing: space.tight,
-        title(cv.name),
-        cv.title,
-        meta(cv.location),
+    #grid(
+      columns: (
+        header_photo_track,
+        1fr,
+        layout.profile_width,
       ),
 
-      contacts(cv.contact),
-    )
-  ],
+      inset: 0pt,
+      column-gutter: 0pt,
 
-  // Profile
-  [
-    #set par(
-      justify: true,
-    )
+      align: (
+        right + horizon,
+        center + horizon,
+        left + horizon,
+      ),
 
-    #cv.profile
+      // Photo
+      [
+        #box(
+          width: photo_size,
+          height: photo_size,
+          radius: 50%,
+          clip: true,
+        )[
+          #image(
+            cv.photo,
+            width: 100%,
+            height: 100%,
+            fit: "cover",
+            alt: "Portrait of " + cv.name,
+          )
+        ]
+      ],
+
+      // Identity
+      [
+        #align(center)[
+          #stack(
+            spacing: space.related,
+
+            stack(
+              spacing: space.tight,
+              title(cv.name),
+              cv.title,
+            ),
+
+            meta(cv.location),
+
+            contacts(cv.contact),
+          )
+        ]
+      ],
+
+      // Profile
+      [
+        #set par(
+          justify: false,
+        )
+
+        #cv.profile
+      ],
+    )
   ],
 )
 
@@ -440,8 +619,8 @@
 // PAGE 1 BODY
 // ============================================================
 
-// Sidebar width matches the first header column.
-// The body fills the remaining height of the A4 page.
+// Sidebar width is fixed. Both body cells receive the standard
+// 7 mm inset, while main sections are data-driven through cv.main.
 #grid(
   columns: (
     layout.sidebar_width,
@@ -466,20 +645,7 @@
 
   // Sidebar
   [
-    #for (skill_section, groups) in cv.skills [
-      #section(
-        skill_section,
-
-        [
-          #for (group_name, values) in groups [
-            #item(
-              group_name,
-              tags(values),
-            )
-          ]
-        ],
-      )
-    ]
+    #render_skills(cv.skills)
 
     #section(
       "Languages",
@@ -489,43 +655,7 @@
 
   // Main column
   [
-    #section(
-      "Education",
-
-      [
-        #for degree in cv.education [
-          #entry(
-            degree.degree,
-            degree.dates,
-            degree.institution,
-          )
-        ]
-      ],
-    )
-
-
-    #section(
-      "Experience",
-
-      [
-        #for job in cv.experience [
-          #entry(
-            job.role,
-            job.dates,
-            job.organization,
-
-            body: [
-              #for project in job.projects [
-                #item(
-                  project.title,
-                  bullets(project.bullets),
-                )
-              ]
-            ],
-          )
-        ]
-      ],
-    )
+    #render_main(cv.main)
   ],
 )
 
@@ -534,46 +664,30 @@
 // PAGE 2
 // ============================================================
 
-#pagebreak()
+#if publications.len() > 0 or additional.len() > 0 [
+  #pagebreak()
 
-#block(
-  width: 100%,
-  inset: layout.inset,
-)[
-
-  // Publications
-  #section(
-    "Publications",
-
-    [
-      #for publication in cv.publications [
-        #item(
-          publication.title,
-
-          [
-            #publication.authors
-            #linebreak()
-            #meta(publication.details)
-          ],
-        )
-      ]
-    ],
+  // Bottom float reserves space for the footer instead of
+  // overlaying normal page content.
+  #place(
+    bottom,
+    float: true,
+    clearance: 0pt,
+    footer(),
   )
 
+  #block(
+    width: 100%,
+    inset: layout.inset,
+  )[
 
-  // Additional user-defined sections
-  #for (section_name, entries) in cv.additional [
-    #section(
-      section_name,
+    #if publications.len() > 0 [
+      #section(
+        "Publications",
+        render_publications(publications),
+      )
+    ]
 
-      [
-        #for entry in entries [
-          #item(
-            entry.title,
-            entry.description,
-          )
-        ]
-      ],
-    )
+    #render_additional(additional)
   ]
 ]
