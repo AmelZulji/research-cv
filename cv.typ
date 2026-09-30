@@ -1,38 +1,27 @@
-// ============================================================
 // DATA
-// ============================================================
 
 #let cv = yaml("cv.yml")
 
 
 // ============================================================
 // DESIGN SYSTEM
-//
-// Most visual changes should happen in this section.
 // ============================================================
 
-
-// ------------------------------------------------------------
 // Typography
-// ------------------------------------------------------------
-
 #let type = (
-  font: "Arial",
-  body: 9.5pt,
+  font: "New Computer Modern",
+  body: 10pt,
 
   // Relative to body size
   title: 2em,
-  heading: 1.15em,
-  subheading: 1.02em,
+  heading: 1.4em,
+  subheading: 1.1em,
   minor: 0.95em,
   meta: 0.9em,
 )
 
 
-// ------------------------------------------------------------
-// Color
-// ------------------------------------------------------------
-
+// Color palette
 #let base_color = rgb("#6F777A")
 
 #let color = (
@@ -43,103 +32,91 @@
 )
 
 
-// ------------------------------------------------------------
 // Page geometry
-// ------------------------------------------------------------
-
 #let layout = (
   page_height: 297mm,
 
+  // Fixed height of the header
   header_height: 48mm,
-  sidebar_width: 65mm,
 
-  // Padding inside every major grid cell
+  // Shared width of the sidebar and photo column
+  sidebar_width: 70mm,
+
+  // Padding inside major grid cells
   inset: 7mm,
 
-  // Dedicated date column in Education / Experience
-  date_width: 23mm,
-  date_gap: 4mm,
+  // Reserved right-hand column for dates
+  date_width: 20mm,
+
+  // Space between main entry content and date column
+  date_gap: 0mm,
 )
 
-// The photo is as large as possible while still fitting
-// inside BOTH the header height and sidebar column.
+
+// Photo fills as much space as possible while fitting
+// within both the header height and sidebar width.
 #let photo_size = calc.min(
   layout.header_height - 2 * layout.inset,
   layout.sidebar_width - 2 * layout.inset,
 )
 
 
-// ------------------------------------------------------------
 // General spacing rhythm
-// ------------------------------------------------------------
-
 #let space = (
-  // Within one tightly related unit
+  // Elements belonging closely together
   tight: 0.3em,
 
-  // Related elements
+  // Related blocks
   related: 0.55em,
 
-  // Separate entries / projects
+  // Separate entries or projects
   item: 0.9em,
 
   // Major sections
   section: 1.4em,
 
-  // Organization → first project
+  // Organization / institution → first project
   entry_body: 0.85em,
 )
 
 
-// ------------------------------------------------------------
-// Section rule
-// ------------------------------------------------------------
-
-#let rule_width = 0.6pt
+// Section underline
+#let rule_width = 1pt
 
 
-// ------------------------------------------------------------
-// Tags
-// ------------------------------------------------------------
-
+// Tag appearance
 #let tag_style = (
   // Padding inside each tag
   pad_x: 0.4em,
   pad_y: 0.3em,
 
-  // Distance between tags
+  // Horizontal spacing between tags
   gap_x: 0.15em,
 
-  // Distance between wrapped rows of tags
+  // Vertical spacing between wrapped rows of tags
   gap_y: 0.2em,
 
   radius: 0.5em,
 )
 
 
-// ------------------------------------------------------------
-// Bullets
-// ------------------------------------------------------------
-
+// Bullet-list appearance
 #let bullet_style = (
-  // Wrapped lines WITHIN one long bullet
-  leading: 0.12em,
+  // Line spacing inside one wrapped bullet
+  leading: 0.2em,
 
-  // Distance BETWEEN separate bullets
-  gap: 0.28em,
+  // Spacing between separate bullet items
+  gap: 0.4em,
 
-  // Position of bullet marker
+  // Bullet marker position
   indent: 0pt,
 
-  // Marker → text distance
+  // Distance between bullet marker and text
   body_indent: 0.5em,
 )
 
 
-// ------------------------------------------------------------
-// Contact icons
-// ------------------------------------------------------------
-
+// Contact icon appearance
 #let contact_style = (
   icon_size: 0.85em,
   icon_gap: 0.45em,
@@ -166,13 +143,13 @@
   lang: "en",
 )
 
-// Normal text and profile rhythm.
+// Default paragraph rhythm used by normal prose.
 #set par(
   leading: 0.5em,
   spacing: 0.35em,
 )
 
-// Components below own structural spacing.
+// Structural spacing is controlled by the components below.
 #set block(
   spacing: 0pt,
 )
@@ -182,7 +159,6 @@
 // TYPOGRAPHIC HIERARCHY
 // ============================================================
 
-
 // Name
 #let title(body) = text(
   size: type.title,
@@ -191,10 +167,7 @@
 )
 
 
-// Major section heading
-//
-// Experience
-// ─────────────────────────────
+// Major section heading with full-width underline
 #let heading(body) = block(
   width: 100%,
 )[
@@ -240,45 +213,25 @@
 
 
 // ============================================================
-// GENERIC COMPONENTS
+// COMPONENTS
 // ============================================================
 
-
-// ------------------------------------------------------------
-// Major section
-//
-// Heading
-// ─────────────────
-// content
-// ------------------------------------------------------------
-
+// Major CV section
 #let section(label, body) = block(
   below: space.section,
 )[
   #stack(
     spacing: space.related,
-
     heading(label),
-
     body,
   )
 ]
 
 
-// ------------------------------------------------------------
-// Education / Experience entry
+// Education / experience entry.
 //
-// LEFT COLUMN                         DATE
-//
-// Position / Degree                  2021–2026
-// Organization
-//
-// Project
-// • bullet
-//
-// Everything except the date stays inside the left column.
-// ------------------------------------------------------------
-
+// Main content occupies the flexible left column.
+// Dates occupy a dedicated fixed-width rail on the right.
 #let entry(label, date, detail, body: none) = block(
   below: if body == none {
     space.related
@@ -299,14 +252,10 @@
       right + top,
     ),
 
-
-    // Main content
     [
       #let header = stack(
         spacing: space.tight,
-
         subheading(label),
-
         meta(detail),
       )
 
@@ -315,16 +264,12 @@
       } else {
         stack(
           spacing: space.entry_body,
-
           header,
-
           body,
         )
       }
     ],
 
-
-    // Date rail
     [
       #meta(date)
     ],
@@ -332,31 +277,24 @@
 ]
 
 
-// ------------------------------------------------------------
-// Smaller titled item
-//
-// Project / skill category / publication
-// ------------------------------------------------------------
-
+// Smaller titled unit used for projects, skill groups,
+// publications, and additional activities.
 #let item(label, body) = block(
   below: space.item,
 )[
   #stack(
     spacing: space.tight,
-
     minor(label),
-
     body,
   )
 ]
 
 
-// ============================================================
-// BULLETS
-// ============================================================
-
+// Bullet list.
+//
+// Paragraph leading controls wrapped lines within one bullet.
+// List spacing controls separation between individual bullets.
 #let bullets(values) = [
-  // These paragraph settings apply ONLY inside bullets.
   #set par(
     justify: true,
     leading: bullet_style.leading,
@@ -365,9 +303,7 @@
 
   #list(
     tight: true,
-
     spacing: bullet_style.gap,
-
     indent: bullet_style.indent,
     body-indent: bullet_style.body_indent,
 
@@ -378,26 +314,21 @@
 ]
 
 
-// ============================================================
-// TAGS
-// ============================================================
-
+// Skill / language tag
 #let tag(body) = box(
   inset: (
     x: tag_style.pad_x,
     y: tag_style.pad_y,
   ),
-
   radius: tag_style.radius,
   fill: white,
-
 )[
   #meta(body)
 ]
 
 
+// Inline collection of tags with wrapping support
 #let tags(values) = [
-  // Local line spacing controls wrapped tag rows.
   #set par(
     leading: tag_style.gap_y,
     spacing: 0pt,
@@ -410,16 +341,11 @@
 ]
 
 
-// ============================================================
-// CONTACTS
+// Contact entry.
 //
-// YAML key → matching assets/<key>.svg
-//
+// The YAML key determines the icon filename:
 // email → assets/email.svg
 // github → assets/github.svg
-// etc.
-// ============================================================
-
 #let contact(kind, value) = grid(
   columns: (
     contact_style.icon_size,
@@ -446,6 +372,7 @@
 )
 
 
+// Center the complete contact block below the name and title.
 #let contacts(values) = align(center)[
   #stack(
     spacing: space.tight,
@@ -462,20 +389,16 @@
 
 // ============================================================
 // HEADER
-//
-// First column exactly matches the sidebar width:
-//
-// |    sidebar width    |      equal      |      equal      |
-// |       photo         | name + contact  |     profile     |
-//
-// This gives the photo and sidebar the same vertical axis.
 // ============================================================
 
+// The first column exactly matches the sidebar width.
+// Identity and profile share the remaining space.
+// Increase the final `fr` value to give the profile more width.
 #grid(
   columns: (
     layout.sidebar_width,
     1fr,
-    1fr,
+    1.5fr,
   ),
 
   rows: (
@@ -491,45 +414,31 @@
     left + horizon,
   ),
 
-
-  // ----------------------------------------------------------
   // Photo
-  // ----------------------------------------------------------
-
   [
     #box(
       width: photo_size,
       height: photo_size,
-
       radius: 50%,
       clip: true,
-
     )[
       #image(
         cv.photo,
-
         width: 100%,
         height: 100%,
-
         fit: "cover",
       )
     ]
   ],
 
-
-  // ----------------------------------------------------------
-  // Identity + contacts
-  // ----------------------------------------------------------
-
+  // Identity and contacts
   [
     #stack(
       spacing: space.related,
 
       stack(
         spacing: space.tight,
-
         title(cv.name),
-
         cv.title,
       ),
 
@@ -537,13 +446,8 @@
     )
   ],
 
-
-  // ----------------------------------------------------------
   // Profile
-  // ----------------------------------------------------------
-
   [
-    // Profile only: justified.
     #set par(
       justify: true,
     )
@@ -554,13 +458,11 @@
 
 
 // ============================================================
-// BODY
-//
-// First body column exactly matches the first header column.
-//
-// |      sidebar       |                main                |
+// PAGE 1 BODY
 // ============================================================
 
+// Sidebar width matches the first header column.
+// The body fills the remaining height of the A4 page.
 #grid(
   columns: (
     layout.sidebar_width,
@@ -583,28 +485,15 @@
     left + top,
   ),
 
-
-  // ==========================================================
-  // SIDEBAR
-  // ==========================================================
-
+  // Sidebar
   [
-
-    // --------------------------------------------------------
-    // Skills
-    // --------------------------------------------------------
-
     #for (skill_section, groups) in cv.skills [
-
       #section(
         skill_section,
-
         [
           #for (group_name, values) in groups [
-
             #item(
               group_name,
-
               tags(values),
             )
           ]
@@ -612,35 +501,18 @@
       )
     ]
 
-
-    // --------------------------------------------------------
-    // Languages
-    // --------------------------------------------------------
-
     #section(
       "Languages",
-
       tags(cv.languages),
     )
   ],
 
-
-  // ==========================================================
-  // MAIN COLUMN
-  // ==========================================================
-
+  // Main column
   [
-
-    // --------------------------------------------------------
-    // Education
-    // --------------------------------------------------------
-
     #section(
       "Education",
-
       [
         #for degree in cv.education [
-
           #entry(
             degree.degree,
             degree.dates,
@@ -650,29 +522,19 @@
       ],
     )
 
-
-    // --------------------------------------------------------
-    // Experience
-    // --------------------------------------------------------
-
     #section(
       "Experience",
-
       [
         #for job in cv.experience [
-
           #entry(
             job.role,
             job.dates,
             job.organization,
 
             body: [
-
               #for project in job.projects [
-
                 #item(
                   project.title,
-
                   bullets(project.bullets),
                 )
               ]
@@ -691,30 +553,21 @@
 
 #pagebreak()
 
-
 #block(
   width: 100%,
   inset: layout.inset,
 )[
 
-  // ----------------------------------------------------------
   // Publications
-  // ----------------------------------------------------------
-
   #section(
     "Publications",
-
     [
       #for publication in cv.publications [
-
         #item(
           publication.title,
-
           [
             #publication.authors
-
             #linebreak()
-
             #meta(publication.details)
           ],
         )
@@ -723,21 +576,14 @@
   )
 
 
-  // ----------------------------------------------------------
-  // Additional sections
-  // ----------------------------------------------------------
-
+  // Additional user-defined sections
   #for (section_name, entries) in cv.additional [
-
     #section(
       section_name,
-
       [
         #for entry in entries [
-
           #item(
             entry.title,
-
             entry.description,
           )
         ]

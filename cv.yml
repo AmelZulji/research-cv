@@ -90,15 +90,15 @@ languages:
 education:
   - degree: "Highest Degree in Subject"
     institution: "Institution Name"
-    dates: "Start–End"
+    dates: "year–year"
 
   - degree: "Previous Degree in Subject"
     institution: "Institution Name"
-    dates: "Start–End"
+    dates: "year–year"
 
   - degree: "Earlier Degree in Subject"
     institution: "Institution Name"
-    dates: "Start–End"
+    dates: "year–year"
 
 
 # ============================================================
@@ -112,7 +112,7 @@ education:
 experience:
   - role: "Current or Most Recent Position"
     organization: "Organization Name · Department or Group"
-    dates: "Start–present"
+    dates: "year–year"
 
     projects:
       - title: "Main project, research topic, or responsibility area"
@@ -129,7 +129,7 @@ experience:
 
   - role: "Previous Position"
     organization: "Organization Name · Department or Group"
-    dates: "Start–End"
+    dates: "year–year"
 
     projects:
       - title: "Major project, thesis topic, or responsibility area"
