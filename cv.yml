@@ -1,79 +1,57 @@
-# ============================================================
-# IDENTITY
-# ============================================================
-
-# Square images work best because the template applies
-# a circular crop.
 photo: "assets/photo.jpg"
 
 name: "Your Name"
 title: "Your Professional Title"
+location: "City, Country"
 
-
-# Contact keys correspond to:
-# assets/location.svg
-# assets/email.svg
-# assets/github.svg
-# assets/bluesky.svg
-# assets/linkedin.svg
 contact:
-  location: "City, Country"
-  email: "name@example.org"
-  github: "github-username"
-  bluesky: "@bluesky-handle.example"
-  linkedin: "linkedin-profile"
+  - icon: "assets/email.svg"
+    url: "mailto:name@example.org"
+
+  - icon: "assets/github.svg"
+    url: "https://github.com/username"
+
+  - icon: "assets/bluesky.svg"
+    url: "https://bsky.app/profile/username.example"
+
+  - icon: "assets/linkedin.svg"
+    url: "https://www.linkedin.com/in/username"
 
 
-# Aim for approximately 50–80 words.
 profile: >
-  Professional working at the intersection of research, technology, and
-  problem solving. Experienced in developing rigorous approaches to complex
-  questions, working across disciplines, and translating technical work into
-  clear and useful outcomes. Combines subject-matter expertise with analytical
-  thinking, reproducible workflows, and collaborative project work.
+  Write a concise professional summary describing your background, main areas
+  of expertise, approach to your work, and the type of impact or outcomes you
+  aim to achieve. Keep the description specific, readable, and relevant to the
+  positions or opportunities you are targeting.
 
-
-# ============================================================
-# SKILLS
-#
-# Structure:
-# Major skill area
-#   → skill category
-#       → tags
-# ============================================================
 
 skills:
-  Domain Expertise:
-    Core Methods:
-      - "core method"
-      - "specialized technique"
-      - "experimental design"
-      - "quality control"
+  Skillset 1:
+    Skill subset 1:
+      - "Skill 1"
+      - "Skill 2"
+      - "Skill 3"
+      - "Skill 4"
 
-    Applied Methods:
-      - "sample processing"
-      - "method development"
-      - "technical workflows"
-      - "documentation"
+    Skill subset 2:
+      - "Skill 1"
+      - "Skill 2"
+      - "Skill 3"
+      - "Skill 4"
 
-  Data & Technology:
-    Analysis:
-      - "data analysis"
-      - "statistical modeling"
-      - "data visualization"
-      - "machine learning"
+  Skillset 2:
+    Skill subset 3:
+      - "Skill 1"
+      - "Skill 2"
+      - "Skill 3"
+      - "Skill 4"
 
-    Tools & Platforms:
-      - "Software 1"
-      - "Software 2"
-      - "Programming language"
-      - "Version control"
-      - "Computing platform"
+    Skill subset 4:
+      - "Skill 1"
+      - "Skill 2"
+      - "Skill 3"
+      - "Skill 4"
 
-
-# ============================================================
-# LANGUAGES
-# ============================================================
 
 languages:
   - "Language 1 · Native"
@@ -81,117 +59,79 @@ languages:
   - "Language 3 · Intermediate"
 
 
-# ============================================================
-# EDUCATION
-#
-# Most recent / highest qualification first.
-# ============================================================
-
 education:
-  - degree: "Highest Degree in Subject"
+  - degree: "Degree or Qualification 1"
     institution: "Institution Name"
     dates: "year–year"
 
-  - degree: "Previous Degree in Subject"
+  - degree: "Degree or Qualification 2"
     institution: "Institution Name"
     dates: "year–year"
 
-  - degree: "Earlier Degree in Subject"
+  - degree: "Degree or Qualification 3"
     institution: "Institution Name"
     dates: "year–year"
 
-
-# ============================================================
-# EXPERIENCE
-#
-# Use one record per position.
-# Within each position, organize achievements into projects
-# or responsibility areas.
-# ============================================================
 
 experience:
-  - role: "Current or Most Recent Position"
+  - role: "Position or Role 1"
     organization: "Organization Name · Department or Group"
     dates: "year–year"
 
     projects:
-      - title: "Main project, research topic, or responsibility area"
+      - title: "Project, responsibility, or focus area 1"
         bullets:
-          - "Describe the problem you addressed, your individual contribution, and the scale or context of the work."
-          - "Explain the methods, tools, or approach you used and why they were appropriate for the objective."
-          - "State the principal result, improvement, insight, or deliverable produced by your work."
-          - "Include measurable impact, publications, presentations, products, or other concrete outcomes where possible."
+          - "Describe your main responsibility, contribution, or achievement."
+          - "Describe the methods, tools, or approach used."
+          - "Describe the result, outcome, or impact of the work."
 
-      - title: "Second project or collaborative responsibility"
+      - title: "Project, responsibility, or focus area 2"
         bullets:
-          - "Summarize your contribution within the wider team or collaboration."
-          - "Mention leadership, mentoring, coordination, communication, or stakeholder responsibilities where relevant."
+          - "Describe your contribution to this project or responsibility."
+          - "Mention relevant collaboration, leadership, coordination, or other responsibilities."
 
-  - role: "Previous Position"
+  - role: "Position or Role 2"
     organization: "Organization Name · Department or Group"
     dates: "year–year"
 
     projects:
-      - title: "Major project, thesis topic, or responsibility area"
+      - title: "Project, responsibility, or focus area 1"
         bullets:
-          - "Describe the central objective and the work for which you were directly responsible."
-          - "Highlight a method, process, workflow, or capability you established or improved."
-          - "Conclude with the scientific, technical, organizational, or public-facing outcome."
+          - "Describe the objective and your individual contribution."
+          - "Highlight a relevant method, process, or capability."
+          - "Describe the resulting outcome or impact."
 
-
-# ============================================================
-# PUBLICATIONS
-#
-# Keep entries concise. The current renderer displays:
-# title
-# authors
-# details
-# ============================================================
 
 publications:
-  - title: "Title of First Publication"
-    authors: "Your Name, Coauthor A, Coauthor B, et al."
-    details: "Journal Name · Year; volume:pages"
+  - title: "Publication Title 1"
+    authors: "Author A, Your Name, Author B, et al."
+    details: "Journal or Venue · Year; volume:pages"
 
-  - title: "Title of Second Publication"
-    authors: "Coauthor A, Your Name, Coauthor B, et al."
-    details: "Journal Name · Year; volume:pages"
+  - title: "Publication Title 2"
+    authors: "Your Name, Author A, Author B, et al."
+    details: "Journal or Venue · Year; volume:pages"
 
-  - title: "Title of Third Publication"
-    authors: "Your Name, Coauthor A, Supervising Author"
-    details: "Journal Name · Year; volume:pages"
+  - title: "Publication Title 3"
+    authors: "Author A, Author B, Your Name"
+    details: "Journal or Venue · Year; volume:pages"
 
-
-# ============================================================
-# ADDITIONAL SECTIONS
-#
-# Rename, remove, or add sections as needed.
-# Examples:
-# Teaching & Mentoring
-# Awards & Honors
-# Invited Talks
-# Professional Service
-# Outreach
-# Training
-# ============================================================
 
 additional:
-  Teaching & Mentoring:
-    - title: "Course, workshop, or mentoring activity"
+  Additional Section 1:
+    - title: "Activity or Achievement 1"
       description: >
-        Briefly describe your role, the audience, and the principal contribution
-        or outcome.
+        Briefly describe the activity, your role, and the relevant outcome
+        or contribution.
 
-    - title: "Second teaching or mentoring activity"
+    - title: "Activity or Achievement 2"
       description: >
-        Summarize the scope of the activity and any materials, supervision, or
-        responsibilities you provided.
+        Briefly describe the scope of the activity and why it is relevant.
 
-  Awards & Activities:
-    - title: "Award, distinction, or professional activity"
+  Additional Section 2:
+    - title: "Activity or Achievement 1"
       description: >
-        Briefly state the recognition, role, organization, and why it is relevant.
+        Briefly describe your responsibilities, contribution, or recognition.
 
-    - title: "Professional service or outreach activity"
+    - title: "Activity or Achievement 2"
       description: >
-        Summarize your responsibilities and the value or impact of your contribution.
+        Briefly summarize the activity and its outcome or impact.
