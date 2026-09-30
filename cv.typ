@@ -46,15 +46,14 @@
   inset: 7mm,
 
   // Reserved right-hand column for dates
-  date_width: 20mm,
+  date_width: 23mm,
 
   // Space between main entry content and date column
   date_gap: 0mm,
 )
 
 
-// Photo fills as much space as possible while fitting
-// within both the header height and sidebar width.
+// Photo size is constrained by both the header and sidebar.
 #let photo_size = calc.min(
   layout.header_height - 2 * layout.inset,
   layout.sidebar_width - 2 * layout.inset,
@@ -90,10 +89,8 @@
   pad_x: 0.4em,
   pad_y: 0.3em,
 
-  // Horizontal spacing between tags
+  // Spacing between tags
   gap_x: 0.15em,
-
-  // Vertical spacing between wrapped rows of tags
   gap_y: 0.2em,
 
   radius: 0.5em,
@@ -102,10 +99,10 @@
 
 // Bullet-list appearance
 #let bullet_style = (
-  // Line spacing inside one wrapped bullet
+  // Line spacing within one wrapped bullet
   leading: 0.2em,
 
-  // Spacing between separate bullet items
+  // Spacing between separate bullets
   gap: 0.4em,
 
   // Bullet marker position
@@ -116,10 +113,10 @@
 )
 
 
-// Contact icon appearance
+// Contact icons
 #let contact_style = (
-  icon_size: 0.85em,
-  icon_gap: 0.45em,
+  icon_size: 1.6em,
+  gap: 1em,
 )
 
 
@@ -143,7 +140,7 @@
   lang: "en",
 )
 
-// Default paragraph rhythm used by normal prose.
+// Default rhythm for normal prose.
 #set par(
   leading: 0.5em,
   spacing: 0.35em,
@@ -167,7 +164,7 @@
 )
 
 
-// Major section heading with full-width underline
+// Major section heading
 #let heading(body) = block(
   width: 100%,
 )[
@@ -204,7 +201,7 @@
 )
 
 
-// Dates / organizations / contacts / tags
+// Dates / organizations / secondary information
 #let meta(body) = text(
   size: type.meta,
   fill: color.muted,
@@ -230,8 +227,8 @@
 
 // Education / experience entry.
 //
-// Main content occupies the flexible left column.
-// Dates occupy a dedicated fixed-width rail on the right.
+// Main content uses the flexible left column.
+// Dates use a dedicated fixed-width rail on the right.
 #let entry(label, date, detail, body: none) = block(
   below: if body == none {
     space.related
@@ -320,6 +317,7 @@
     x: tag_style.pad_x,
     y: tag_style.pad_y,
   ),
+
   radius: tag_style.radius,
   fill: white,
 )[
@@ -327,7 +325,7 @@
 ]
 
 
-// Inline collection of tags with wrapping support
+// Inline collection of wrapping tags
 #let tags(values) = [
   #set par(
     leading: tag_style.gap_y,
@@ -341,48 +339,28 @@
 ]
 
 
-// Contact entry.
-//
-// The YAML key determines the icon filename:
-// email → assets/email.svg
-// github → assets/github.svg
-#let contact(kind, value) = grid(
-  columns: (
-    contact_style.icon_size,
-    auto,
+// Clickable contact icon.
+// Icon path and destination are defined in cv.yml.
+#let contact(entry) = link(
+  entry.url,
+
+  image(
+    entry.icon,
+    width: contact_style.icon_size,
+    height: contact_style.icon_size,
+    fit: "contain",
   ),
-
-  column-gutter: contact_style.icon_gap,
-
-  align: (
-    center + horizon,
-    left + horizon,
-  ),
-
-  [
-    #image(
-      "assets/" + kind + ".svg",
-      width: contact_style.icon_size,
-    )
-  ],
-
-  [
-    #meta(value)
-  ],
 )
 
 
-// Center the complete contact block below the name and title.
+// Contact icons are rendered in one centered horizontal row.
 #let contacts(values) = align(center)[
-  #stack(
-    spacing: space.tight,
+  #grid(
+    columns: (auto,) * values.len(),
+    column-gutter: contact_style.gap,
+    align: center + horizon,
 
-    ..values.pairs().map(
-      pair => contact(
-        pair.at(0),
-        pair.at(1),
-      )
-    ),
+    ..values.map(contact),
   )
 ]
 
@@ -392,8 +370,8 @@
 // ============================================================
 
 // The first column exactly matches the sidebar width.
-// Identity and profile share the remaining space.
-// Increase the final `fr` value to give the profile more width.
+// Identity uses 1fr and the profile 1.5fr.
+// Adjust these fractions if the profile needs more or less width.
 #grid(
   columns: (
     layout.sidebar_width,
@@ -431,7 +409,7 @@
     ]
   ],
 
-  // Identity and contacts
+  // Identity
   [
     #stack(
       spacing: space.related,
@@ -440,6 +418,7 @@
         spacing: space.tight,
         title(cv.name),
         cv.title,
+        meta(cv.location),
       ),
 
       contacts(cv.contact),
@@ -490,6 +469,7 @@
     #for (skill_section, groups) in cv.skills [
       #section(
         skill_section,
+
         [
           #for (group_name, values) in groups [
             #item(
@@ -511,6 +491,7 @@
   [
     #section(
       "Education",
+
       [
         #for degree in cv.education [
           #entry(
@@ -522,8 +503,10 @@
       ],
     )
 
+
     #section(
       "Experience",
+
       [
         #for job in cv.experience [
           #entry(
@@ -561,10 +544,12 @@
   // Publications
   #section(
     "Publications",
+
     [
       #for publication in cv.publications [
         #item(
           publication.title,
+
           [
             #publication.authors
             #linebreak()
@@ -580,6 +565,7 @@
   #for (section_name, entries) in cv.additional [
     #section(
       section_name,
+
       [
         #for entry in entries [
           #item(
